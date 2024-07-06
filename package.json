@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:watch": "ng test --watch",
-    "ci:test": "ng test --watch=false --code-coverage"
+    "ci:test": "ng test --watch=false --code-coverage",
+    "mockserver": "json-server --watch db.json --port 3000 --delay 800",
+    "startdev": "concurrently --kill-others \"npm start\" \"npm run mockserver\""
   },
   "private": true,
   "dependencies": {
@@ -21,6 +23,7 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "json-server": "^0.17.0",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
     "primeng": "^16.9.1",
