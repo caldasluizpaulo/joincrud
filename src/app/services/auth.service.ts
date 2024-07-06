@@ -39,4 +39,11 @@ export class AuthService {
   setUserSession(userEmailJoin: string) {
     sessionStorage.setItem('userJoin', userEmailJoin as string);
   }
+
+  /**
+   * Metodo para remover o usuário da sessão
+   */
+  removeUserSession(){
+    sessionStorage.removeItem('userJoin');
+  }
 }

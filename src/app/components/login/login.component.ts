@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ILogin } from 'src/app/interfaces/iLogin';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService) {}
+    private authService: AuthService,
+    private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -45,14 +47,15 @@ export class LoginComponent implements OnInit {
         this.validateLogin(response, login)
       }
     }, error => {
-      //TODO
-      console.log(error);
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'email ou senha incorreto(s).' });
     })
   }
 
   validateLogin(users: iUser[], login: ILogin) {
     const userFind = users.find(user => user.password === login.password);
     if(userFind) {
+      this.router.navigate(['home']);
+
       return this.authService.setUserSession(login.email);
     }
     //TODO
