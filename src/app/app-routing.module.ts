@@ -3,12 +3,15 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { LoginComponent } from "./components/login/login.component";
 import { CadastrarComponent } from "./components/cadastrar/cadastrar.component";
+import { HomeComponent } from "./components/home/home.component";
+import { homeAuthGuard } from "./guards/homeAuth.guard";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
   {
     path: 'login',
@@ -18,6 +21,11 @@ const routes: Routes = [
     path: 'cadastrar',
     component: CadastrarComponent
   },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [homeAuthGuard]
+  }
 ];
 
 @NgModule({

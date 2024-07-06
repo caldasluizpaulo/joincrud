@@ -8,6 +8,7 @@ import { ToastModule } from 'primeng/toast';
 import { LoginComponent } from './login.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -21,6 +22,7 @@ describe('LoginComponent', () => {
         ButtonModule,
         ToastModule,
         HttpClientModule],
+        providers: [MessageService],
         schemas: [
           CUSTOM_ELEMENTS_SCHEMA,
           NO_ERRORS_SCHEMA

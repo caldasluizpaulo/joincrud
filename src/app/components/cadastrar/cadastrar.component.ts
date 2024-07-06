@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { iUser } from 'src/app/interfaces/iUser';
 import { AuthService } from '../../services/auth.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cadastrar',
@@ -16,7 +17,8 @@ export class CadastrarComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService) {}
+    private authService: AuthService,
+    private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -50,16 +52,26 @@ export class CadastrarComponent implements OnInit {
   submitCadastrar() {
     const userTyped: iUser = { ...this.formCadastro.value };
     console.log(userTyped);
+
     this.authService.saveUser(userTyped).subscribe(response => {
-      console.log('sucesso', response);
-
       this.router.navigate(['login']);
-
+      this.setSucessMessage();
     }, error => {
-      //TODO
-      console.log('erro cadastrar');
+      console.log('error', error);
+      this.setErrorMessage();
     })
+  }
 
+  setSucessMessage() {
+    setTimeout(() => {
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Cadastro realizado com sucesso!' });
+    }, 1000);
+  }
+
+  setErrorMessage() {
+    setTimeout(() => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Algo deu errado.' });
+    }, 1000);
   }
 
 }

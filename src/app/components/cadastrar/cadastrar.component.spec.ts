@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 
 import { CadastrarComponent } from './cadastrar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 describe('CadastrarComponent', () => {
   let component: CadastrarComponent;
@@ -13,7 +14,8 @@ describe('CadastrarComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CadastrarComponent],
-      imports: [CardModule, ButtonModule, HttpClientModule]
+      imports: [CardModule, ButtonModule, HttpClientModule],
+      providers: [MessageService]
     });
     fixture = TestBed.createComponent(CadastrarComponent);
     component = fixture.componentInstance;
