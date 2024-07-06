@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "fullName": "test user",
+      "email": "test1@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "2",
+      "fullName": "test Data",
+      "email": "test@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "3",
+      "fullName": "Luiz Paulo",
+      "email": "luiz@luiz.com",
+      "password": "123"
+    },
+    {
+      "name": "Teste123",
+      "email": "teste@teste123.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "ZjNY8nv"
+    }
+  ]
+}

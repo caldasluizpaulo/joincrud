@@ -1,0 +1,46 @@
+<form [formGroup]="formulario" (ngSubmit)="submitLogin()">
+  <p-card header="Login" [style]="{ width: '400px' }">
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="email"
+        class="w-full"
+        name="email"
+        placeholder="Digite seu e-mail"
+      />
+      <small
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="email.errors?.['required']">E-mail é obrigatório.</div>
+        <div *ngIf="email.errors?.['email']">E-mail está inválido.</div>
+      </small>
+    </div>
+    <div class="field">
+      <label for="password">Senha</label>
+      <input
+        type="password"
+        pInputText
+        formControlName="password"
+        class="w-full"
+        name="password"
+        placeholder="Digite sua senha"
+      />
+      <small
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="password.errors?.['required']">Senha é obrigatória.</div>
+      </small>
+    </div>
+    <p-button
+      label="ENTRAR"
+      styleClass="w-full"
+      [disabled]="formulario.invalid"
+      type="submit"
+    ></p-button>
+    <div class="mt-2">Ainda não é membro? <a routerLink="/cadastrar">Cadastrar</a></div>
+  </p-card>
+</form>
