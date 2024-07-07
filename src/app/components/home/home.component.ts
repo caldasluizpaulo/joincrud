@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
       {
           label: 'Cadastro',
           items: [
-              { label: 'Categoria', icon: 'pi pi-fw pi-eye', routerLink: ['/cadastrar'], badge: 'NEW' },
+              { label: 'Categoria', icon: 'pi pi-fw pi-eye', routerLink: ['categoria'], badge: 'NEW' },
               { label: 'Produto', icon: 'pi pi-fw pi-globe', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
           ]
       },
