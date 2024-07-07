@@ -74,5 +74,27 @@
       "confirmPassword": "123",
       "id": "o6O6jKB"
     }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "name": "Eletrônicos",
+      "status": "Ativa"
+    },
+    {
+      "id": 2,
+      "name": "Livros",
+      "status": "Ativa"
+    },
+    {
+      "id": 3,
+      "name": "Brinquedos",
+      "status": "Ativa"
+    },
+    {
+      "id": 4,
+      "name": "Roupas",
+      "status": "Cancelada"
+    }
   ]
 }

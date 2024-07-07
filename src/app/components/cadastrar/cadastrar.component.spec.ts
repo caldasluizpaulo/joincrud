@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { CadastrarComponent } from './cadastrar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CadastrarComponent', () => {
   let component: CadastrarComponent;
@@ -15,7 +16,11 @@ describe('CadastrarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [CadastrarComponent],
       imports: [CardModule, ButtonModule, HttpClientModule],
-      providers: [MessageService]
+      providers: [MessageService],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA
+      ]
     });
     fixture = TestBed.createComponent(CadastrarComponent);
     component = fixture.componentInstance;
