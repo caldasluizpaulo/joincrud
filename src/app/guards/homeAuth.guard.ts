@@ -8,6 +8,7 @@ export const homeAuthGuard: CanActivateFn = (route, state) => {
 
     return true;
   } else {
+    console.log('userJoin falser');
     const router = inject(Router);
     return router.navigate(['login']);
   }

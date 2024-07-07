@@ -1,2 +1,19 @@
-<p>home works!</p>
-<p-button label="Sair" (onClick)="logout()"></p-button>
+<app-topbar></app-topbar>
+ <div class="layout-sidebar">
+  <ul class="layout-menu">
+    <ng-container *ngFor="let item of model; let i = index;">
+      <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
+      <li *ngIf="item.separator" class="menu-separator"></li>
+    </ng-container>
+  </ul>
+</div>
+<div class="layout-main-container">
+  <div class="layout-main">
+
+    <router-outlet></router-outlet>
+
+  </div>
+  <div class="layout-mask"></div>
+  <app-footer></app-footer>
+</div>
+<!-- <app-config></app-config> -->
