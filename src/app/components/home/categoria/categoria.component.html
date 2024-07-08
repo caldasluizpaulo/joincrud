@@ -1,4 +1,13 @@
-<div class="grid">
+<ng-container style="display: flex;" *ngIf="loadingCategoria">
+  <p-progressSpinner
+    styleClass="w-4rem h-4rem display: flex"
+    strokeWidth="8"
+    fill="var(--surface-ground)"
+    animationDuration=".5s"
+    *ngIf="loadingCategoria"
+    />
+</ng-container>
+<div class="grid" *ngIf="!loadingCategoria">
   <div class="col-12">
       <div class="card px-6 py-6">
           <p-toast></p-toast>
