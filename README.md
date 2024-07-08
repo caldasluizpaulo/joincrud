@@ -2,9 +2,13 @@
 
 Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0 e utilizando o node 18
 
-## Development server
+## Install
 
-Rode `npm start` para iniciar a aplicação juntamente com a api fake 'json-server'. 
+Por favor, rodar `npm install`.
+
+## Run
+
+Por farvor, rodar `npm start` para iniciar a aplicação juntamente com a api fake 'json-server'. 
 Navegue até  `http://localhost:4200/`. O aplicativo será recarregado automaticamente.
 
 ## Pipeline CI
