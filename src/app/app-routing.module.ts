@@ -26,6 +26,7 @@ const routes: Routes = [
     canActivate: [homeAuthGuard],
     loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
   },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

@@ -1,11 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { HomeComponent } from "./home.component";
-import { CommonModule } from "@angular/common";
-import { BrowserModule } from "@angular/platform-browser";
 
+import { HomeComponent } from "./home.component";
 import { CategoriaComponent } from "./categoria/categoria.component";
 import { homeAuthGuard } from "src/app/guards/homeAuth.guard";
+import { ProdutoComponent } from "./produto/produto.component";
 
 const routes = [
   {
@@ -17,6 +16,10 @@ const routes = [
           path: 'categoria',
           component: CategoriaComponent,
       },
+      {
+        path: 'produto',
+        component: ProdutoComponent
+      }
     ]
   }
 ];

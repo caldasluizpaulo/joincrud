@@ -3,14 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently --kill-others \"ng serve\" \"npm run mockserver\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:watch": "ng test --watch",
     "ci:test": "ng test --watch=false --code-coverage",
-    "mockserver": "json-server --watch db.json --port 3000 --delay 800",
-    "startdev": "concurrently --kill-others \"npm start\" \"npm run mockserver\""
+    "mockserver": "json-server --watch db.json --port 3000 --delay 800"
   },
   "private": true,
   "dependencies": {

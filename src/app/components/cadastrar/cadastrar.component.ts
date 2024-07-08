@@ -51,20 +51,18 @@ export class CadastrarComponent implements OnInit {
 
   submitCadastrar() {
     const userTyped: iUser = { ...this.formCadastro.value };
-    console.log(userTyped);
 
     this.authService.saveUser(userTyped).subscribe(response => {
       this.router.navigate(['login']);
       this.setSucessMessage();
     }, error => {
-      console.log('error', error);
       this.setErrorMessage();
     })
   }
 
   setSucessMessage() {
     setTimeout(() => {
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Cadastro realizado com sucesso!' });
+      this.messageService.add({ severity: 'sucesso', summary: 'Success', detail: 'Cadastro realizado com sucesso!' });
     }, 1000);
   }
 

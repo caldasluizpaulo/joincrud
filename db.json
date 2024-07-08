@@ -95,6 +95,45 @@
       "id": 4,
       "name": "Roupas",
       "status": "Cancelada"
+    },
+    {
+      "name": "Outros",
+      "id": 6,
+      "status": "Cancelada"
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "name": "Monitor",
+      "preco": 2000,
+      "quantidade": 10,
+      "categoria": "Eletrônicos",
+      "descricao": "Um monitor muito bom"
+    },
+    {
+      "id": 2,
+      "name": "Livro",
+      "preco": 211,
+      "quantidade": 10,
+      "categoria": "Livros",
+      "descricao": "Um livro muito bom"
+    },
+    {
+      "id": 3,
+      "name": "Cadeira",
+      "preco": 500,
+      "quantidade": 10,
+      "categoria": "Roupas",
+      "descricao": "Uma cadeira muito boa"
+    },
+    {
+      "name": "Xadrez",
+      "preco": 50,
+      "quantidade": 25,
+      "descricao": "Jogo de Xadrez",
+      "id": 4,
+      "categoria": "Brinquedos"
     }
   ]
 }

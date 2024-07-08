@@ -53,12 +53,12 @@ export class LoginComponent implements OnInit {
 
   validateLogin(users: iUser[], login: ILogin) {
     const userFind = users.find(user => user.password === login.password);
+
     if(userFind) {
       this.router.navigate(['home']);
-
       return this.authService.setUserSession(login.email);
     }
-    //TODO
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'email ou senha incorreto(s).' });
     return console.log('error');
   }
 
