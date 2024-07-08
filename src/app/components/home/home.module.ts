@@ -25,6 +25,7 @@ import { ButtonModule } from "primeng/button";
 import { ProdutoComponent } from "./produto/produto.component";
 import localePt from '@angular/common/locales/pt';
 import { ToastModule } from "primeng/toast";
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 registerLocaleData(localePt, 'pt');
 
@@ -56,7 +57,8 @@ registerLocaleData(localePt, 'pt');
     DialogModule,
     InputTextModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    ProgressSpinnerModule
   ],
   exports: [
     HomeComponent,
