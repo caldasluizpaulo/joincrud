@@ -1,0 +1,139 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "fullName": "test user",
+      "email": "test1@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "2",
+      "fullName": "test Data",
+      "email": "test@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "3",
+      "fullName": "Luiz Paulo",
+      "email": "luiz@luiz.com",
+      "password": "123"
+    },
+    {
+      "name": "Teste123",
+      "email": "teste@teste123.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "ZjNY8nv"
+    },
+    {
+      "name": "Luiz Paulo Caldas de Faria222",
+      "email": "luiz21.lupa@gmail.com222",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "tzrLMg5"
+    },
+    {
+      "name": "Luiz Paulo Caldas de Faria333",
+      "email": "luiz21.lupa@gmail.com33",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "u6HCxxT"
+    },
+    {
+      "name": "Luiz Paulo Caldas de Faria444",
+      "email": "luiz21.lupa@gmail.com444",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "_AjAFHG"
+    },
+    {
+      "name": "Luiz Paulo Caldas de F8888",
+      "email": "teste@tesc.com",
+      "password": "1",
+      "confirmPassword": "1",
+      "id": "jy_gMTs"
+    },
+    {
+      "name": "Luiz Paulo Caldas de Faria",
+      "email": "luiz21.lupa@gmail.com444",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "RZ1IpsR"
+    },
+    {
+      "name": "Luiz Paulo Caldas de Faria888",
+      "email": "luiz21.lupa@gmail.com",
+      "password": "88",
+      "confirmPassword": "88",
+      "id": "ZEq7dSK"
+    },
+    {
+      "name": "Luiz Paulo Caldas de Faria53",
+      "email": "luiz21.lupa@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": "o6O6jKB"
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "name": "Eletrônicos",
+      "status": "Ativa"
+    },
+    {
+      "id": 2,
+      "name": "Livros",
+      "status": "Ativa"
+    },
+    {
+      "id": 3,
+      "name": "Brinquedos",
+      "status": "Ativa"
+    },
+    {
+      "id": 4,
+      "name": "Roupas",
+      "status": "Cancelada"
+    },
+    {
+      "name": "Outros",
+      "id": 6,
+      "status": "Cancelada"
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "name": "Monitor",
+      "preco": 2000,
+      "quantidade": 10,
+      "categoria": "Eletrônicos",
+      "descricao": "Um monitor muito bom"
+    },
+    {
+      "id": 2,
+      "name": "Livro",
+      "preco": 211,
+      "quantidade": 10,
+      "categoria": "Livros",
+      "descricao": "Um livro muito bom"
+    },
+    {
+      "id": 3,
+      "name": "Cadeira",
+      "preco": 500,
+      "quantidade": 10,
+      "categoria": "Roupas",
+      "descricao": "Uma cadeira muito boa"
+    },
+    {
+      "name": "Xadrez",
+      "preco": 50,
+      "quantidade": 25,
+      "descricao": "Jogo de Xadrez",
+      "id": 4,
+      "categoria": "Brinquedos"
+    }
+  ]
+}
