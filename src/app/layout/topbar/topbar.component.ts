@@ -26,7 +26,6 @@ export class TopbarComponent {
   ) {}
 
   logout() {
-    console.log('Tentei voltar para longin');
     this.authService.removeUserSession();
     this.router.navigate(['login']);
   }

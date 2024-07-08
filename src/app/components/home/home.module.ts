@@ -1,5 +1,5 @@
-import { CommonModule } from "@angular/common";
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { CommonModule, registerLocaleData } from "@angular/common";
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 
 import { RippleModule } from 'primeng/ripple';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -21,8 +21,12 @@ import { HomeRoutingModule } from "./module-routing.module";
 import { TableModule } from "primeng/table";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { ButtonModule } from "primeng/button";
+import { ProdutoComponent } from "./produto/produto.component";
+import localePt from '@angular/common/locales/pt';
+import { ToastModule } from "primeng/toast";
 
-
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { HttpClientModule } from "@angular/common/http";
     TopbarComponent,
     FooterComponent,
     AppMenuitemComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    ProdutoComponent
   ],
   imports: [
     CommonModule,
@@ -49,15 +54,19 @@ import { HttpClientModule } from "@angular/common/http";
     RadioButtonModule,
     InputNumberModule,
     DialogModule,
-    InputTextModule
+    InputTextModule,
+    ButtonModule,
+    ToastModule
   ],
   exports: [
     HomeComponent,
     TopbarComponent,
     FooterComponent,
     AppMenuitemComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    ProdutoComponent
   ],
+  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA

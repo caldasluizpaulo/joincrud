@@ -23,7 +23,7 @@ describe('CategoriaComponent', () => {
     TestBed.configureTestingModule({
       declarations: [CategoriaComponent],
       imports: [HttpClientModule],
-      providers: [HttpClient],
+      providers: [HttpClient, MessageService],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
         NO_ERRORS_SCHEMA
