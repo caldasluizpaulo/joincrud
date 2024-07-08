@@ -1,10 +1,15 @@
 # Joincrud
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.6.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 16.0.6 e utilizando o node 18
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Rode `npm start` para iniciar a aplicação juntamente com a api fake 'json-server'. 
+Navegue até  `http://localhost:4200/`. O aplicativo será recarregado automaticamente.
+
+## Pipeline CI
+
+Merges realizados em master ou develop serão executados build e test unitários da aplicação para garantir funcionamento da aplicação.
 
 ## Code scaffolding
 
