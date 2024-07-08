@@ -37,4 +37,9 @@ describe('CadastrarComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('p-card')?.textContent).toContain('Cadastrar de Usuário');
   });
+
+  it('should create Form', () => {
+    component.createForm();
+    expect(component.createForm).toBeTruthy();
+  });
 });

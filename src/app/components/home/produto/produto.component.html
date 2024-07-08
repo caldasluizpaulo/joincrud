@@ -6,7 +6,7 @@
     animationDuration=".5s"
     *ngIf="loadingProduto"/>
 </ng-container>
-<div class="grid" *ngIf="!loadingProduto">
+<div class="grid" *ngIf="!loadingProduto" style="margin-left: 22rem;">
   <div class="col-12">
       <div class="card px-6 py-6">
           <p-toast></p-toast>
@@ -30,7 +30,7 @@
           [rowHover]="true" dataKey="id">
               <ng-template pTemplate="caption">
                   <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-                      <h5 class="m-0">Produtos</h5>
+                      <h5 class="m-0">{{title}}</h5>
                       <span class="block mt-2 md:mt-0 p-input-icon-left">
                           <i class="pi pi-search"></i>
                           <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Buscar..."  class="w-full sm:w-auto"/>
@@ -53,7 +53,7 @@
                       <td style="width:14%; min-width:10rem;"><span class="p-column-title">Code</span>
                           {{produto.code || produto.id}}
                       </td>
-                      <td style="width:20%; min-width:20rem;">
+                      <td style="width:14%; min-width:10rem;">
                           <span class="p-column-title">Nome</span>
                           {{produto.name}}
                       </td>

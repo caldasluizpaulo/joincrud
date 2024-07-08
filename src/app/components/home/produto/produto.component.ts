@@ -30,6 +30,8 @@ export class ProdutoComponent implements OnInit, OnDestroy {
     { field: 'quantidade', header: 'Quantidade' }
   ];
 
+  title: string = 'Produtos';
+
   selectedProdutos: any;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -106,7 +108,7 @@ export class ProdutoComponent implements OnInit, OnDestroy {
 
   saveProduto() {
     this.visibleNewProduto = false;
-    this.produto.id = this.getMaxIdProdutos();
+    this.produto.id = this.getMaxIdProdutosAndSumOne();
     this.produto.categoria = this.categoriaSelected;
 
     this.produtoService.saveProdutos(this.produto)
@@ -150,7 +152,7 @@ export class ProdutoComponent implements OnInit, OnDestroy {
     });
   }
 
-  getMaxIdProdutos(): number {
+  getMaxIdProdutosAndSumOne(): number {
     const maxId: number = Math.max.apply(Math, this.produtoTable.map((o: IProduto) => o.id));
     return maxId + 1
   }

@@ -15,21 +15,17 @@ export class CategoriaComponent implements OnInit, OnDestroy {
 
   selectedCategorias: any;
 
-  categorias: ICategoria[] = [];
   categoria: ICategoria = {} as ICategoria;
   categoriaSelected: ICategoria = {} as ICategoria;
   categoriaTable: ICategoria[] = [];
-
-  /**
-   * CATEGORIAS
-   */
-
 
   categoriaColumns = [
     { field: 'id', header: 'Código' },
     { field: 'name', header: 'Descrição' },
     { field: 'status', header: 'Status' }
   ];
+
+  title = 'Categorias';
 
   rowsPerPageOptions = [5, 10, 20];
 
@@ -40,8 +36,7 @@ export class CategoriaComponent implements OnInit, OnDestroy {
    */
   categoriaEditDialog: boolean = false;
   deleteCategoriaDialog: boolean = false;
-  submitted: boolean = false;
-  visible: boolean = false;
+  categoriaSaveDialog: boolean = false;
   loadingCategoria: boolean = false;
 
   constructor(
@@ -71,9 +66,8 @@ export class CategoriaComponent implements OnInit, OnDestroy {
   }
 
   saveCategoria() {
-    this.visible = false;
-    this.submitted = true;
-    this.categoria.id = this.getMaxIdCategoria();
+    this.categoriaSaveDialog = false;
+    this.categoria.id = this.getMaxIdProdutosAndSumOne();
     this.categoria.status = 'Ativa';
 
     this.categoriaService.saveCategorias(this.categoria)
@@ -115,7 +109,7 @@ export class CategoriaComponent implements OnInit, OnDestroy {
       });
   }
 
-  getMaxIdCategoria(): number {
+  getMaxIdProdutosAndSumOne(): number {
     const maxId: number = Math.max.apply(Math, this.categoriaTable.map((o: ICategoria) => o.id));
     return maxId + 1
   }
@@ -127,7 +121,7 @@ export class CategoriaComponent implements OnInit, OnDestroy {
   }
 
   openNew() {
-    this.visible = true;
+    this.categoriaSaveDialog = true;
   }
 
   selectDeleteCategoria(categoria: ICategoria) {
@@ -157,11 +151,10 @@ export class CategoriaComponent implements OnInit, OnDestroy {
 
   hideDialog() {
     this.categoriaEditDialog = false;
-    this.submitted = false;
   }
 
   showDialog() {
-    this.visible = true;
+    this.categoriaSaveDialog = true;
   }
 
 
