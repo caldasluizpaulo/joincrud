@@ -13,6 +13,10 @@ const routes = [
     canActivate: [homeAuthGuard],
     children: [
       {
+        path: '',
+        component: ProdutoComponent
+      },
+      {
           path: 'categoria',
           component: CategoriaComponent,
       },

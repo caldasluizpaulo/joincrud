@@ -1,9 +1,9 @@
 import { ProdutoService } from './../../../services/produto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ICategoria } from 'src/app/interfaces/iCategoria';
 import { CategoriaService } from '../../../services/categoria.service';
 import { IProduto } from 'src/app/interfaces/iProduto';
-import { finalize } from 'rxjs';
+import { finalize, Subject, takeUntil } from 'rxjs';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -11,29 +11,19 @@ import { MessageService } from 'primeng/api';
   templateUrl: './categoria.component.html',
   styleUrls: ['./categoria.component.scss']
 })
-export class CategoriaComponent implements OnInit {
+export class CategoriaComponent implements OnInit, OnDestroy {
 
   selectedCategorias: any;
 
   categorias: ICategoria[] = [];
-
   categoria: ICategoria = {} as ICategoria;
+  categoriaSelected: ICategoria = {} as ICategoria;
+  categoriaTable: ICategoria[] = [];
 
   /**
    * CATEGORIAS
    */
-  categoriaTable: ICategoria[] = [];
-    /* {
-      id: 1,
-      name: 'Teste',
-      status: true
-    },
-    {
-      id: 2,
-      name: 'Teste',
-      status: true
-    }
-  ]; */
+
 
   categoriaColumns = [
     { field: 'id', header: 'Código' },
@@ -43,14 +33,16 @@ export class CategoriaComponent implements OnInit {
 
   rowsPerPageOptions = [5, 10, 20];
 
-  categoriaSelected: ICategoria = {} as ICategoria;
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
+  /**
+   * CONTROLES
+   */
   categoriaEditDialog: boolean = false;
   deleteCategoriaDialog: boolean = false;
-
   submitted: boolean = false;
-
   visible: boolean = false;
+  loadingCategoria: boolean = false;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -58,11 +50,22 @@ export class CategoriaComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.loadingCategoria = true;
     this.loadCategorias();
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
   loadCategorias() {
-    this.categoriaService.loadCategorias().subscribe((data: ICategoria[]) => {
+    this.categoriaService.loadCategorias()
+    .pipe(
+      finalize(() => (this.loadingCategoria = false) ),
+      takeUntil(this.destroy$)
+    )
+    .subscribe((data: ICategoria[]) => {
       this.categoriaTable = data;
     })
   }
