@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { finalize } from 'rxjs';
+import { finalize, Subject, takeUntil } from 'rxjs';
 import { ICategoria } from 'src/app/interfaces/iCategoria';
 import { IProduto } from 'src/app/interfaces/iProduto';
 import { CategoriaService } from '../../../services/categoria.service';
@@ -11,15 +11,16 @@ import { ProdutoService } from '../../../services/produto.service';
   templateUrl: './produto.component.html',
   styleUrls: ['./produto.component.scss']
 })
-export class ProdutoComponent implements OnInit {
+export class ProdutoComponent implements OnInit, OnDestroy {
 
   produtoTable: IProduto[] = [];
+  produto: IProduto = {} as IProduto;
+  produtoSelected: IProduto = {} as IProduto;
 
   categorias: ICategoria[] = [];
   categoriaOptions: [{label: string, value: string}] = [{label: '', value: ''}];
   categoriaSelected: string = '';
 
-  produto: IProduto = {} as IProduto;
 
   produtoColumns = [
     { field: 'id', header: 'Código' },
@@ -29,13 +30,16 @@ export class ProdutoComponent implements OnInit {
     { field: 'quantidade', header: 'Quantidade' }
   ];
 
+  title: string = 'Produtos';
+
   selectedProdutos: any;
 
-  produtoSelected: IProduto = {} as IProduto;
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   deleteProdutoDialog: boolean = false;
   visibleNewProduto: boolean = false;
   produtoEditDialog: boolean = false;
+  loadingProduto: boolean = false;
 
   constructor(
     private produtoService: ProdutoService,
@@ -43,10 +47,15 @@ export class ProdutoComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.loadingProduto = true;
     this.loadProdutos();
     this.loadCategorias()
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
   onGlobalFilter(table: any, event: Event) {
     const value: string = (event.target as HTMLInputElement).value;
@@ -87,14 +96,19 @@ export class ProdutoComponent implements OnInit {
   }
 
   loadProdutos() {
-    this.produtoService.loadProdutos().subscribe((data: IProduto[]) => {
+    this.produtoService.loadProdutos()
+    .pipe(
+      finalize(() => (this.loadingProduto = false)),
+      takeUntil(this.destroy$)
+    )
+    .subscribe((data: IProduto[]) => {
       this.produtoTable = data;
     });
   }
 
   saveProduto() {
     this.visibleNewProduto = false;
-    this.produto.id = this.getMaxIdProdutos();
+    this.produto.id = this.getMaxIdProdutosAndSumOne();
     this.produto.categoria = this.categoriaSelected;
 
     this.produtoService.saveProdutos(this.produto)
@@ -138,7 +152,7 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-  getMaxIdProdutos(): number {
+  getMaxIdProdutosAndSumOne(): number {
     const maxId: number = Math.max.apply(Math, this.produtoTable.map((o: IProduto) => o.id));
     return maxId + 1
   }
