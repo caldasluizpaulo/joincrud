@@ -1,6 +1,6 @@
 # Joincrud
 
-Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 16.0.6 e utilizando o node 18
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0 e utilizando o node 18
 
 ## Development server
 
